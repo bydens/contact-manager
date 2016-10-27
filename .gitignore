@@ -1,2 +1,3 @@
 /app/bower_components/
-/app/dist/*
+/app/dist/**/*.js
+/app/dist/**/*.map

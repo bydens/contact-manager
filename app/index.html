@@ -16,9 +16,16 @@
         }
     </style>
   </head>  
-  <body ng-cloak ng-controller="mainController as vm">
-    <h1>Hello world</h1>
-    {{ vm.message }}
+  <body layout="row" ng-cloak ng-controller="mainController as vm">
+
+    <div ng-include="'dist/view/sidenav.html'" layout="vertical"></div>
+    <div layout="column" flex>
+      <div style="background-color: #3949ab">Toolbar</div>
+      <md-content flex>
+        Main content
+      </md-content>
+    </div>
+
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
