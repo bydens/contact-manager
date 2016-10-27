@@ -12,6 +12,6 @@ module ContactManagerApp {
     //   .primaryPalette('blue')
     //   .accentPalette('red');
 
-    $mdThemingProvider.theme('default').dark().primaryPalette('blue');
+    $mdThemingProvider.theme('default').dark().primaryPalette('blue').accentPalette('red');
   });
 }
