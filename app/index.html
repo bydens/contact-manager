@@ -8,6 +8,7 @@
     
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="./bower_components/angular-material-icons/angular-material-icons.css"/>
     <link rel="stylesheet" href="./assets/app.css"/>
     
     <style type="text/css">
@@ -20,8 +21,8 @@
 
     <div ng-include="'dist/view/sidenav.html'" layout="vertical"></div>
     <div layout="column" flex>
-      <div style="background-color: #3949ab">Toolbar</div>
-      <md-content flex>
+      <div ng-include="'dist/view/toolbar-header.html'"></div>
+      <md-content flex id="content">
         Main content
       </md-content>
     </div>
@@ -30,6 +31,7 @@
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
     <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-material-icons/angular-material-icons.js"></script>
     
     <script src="./dist/models.js"></script>
     <script src="./dist/services/userService.js"></script>
