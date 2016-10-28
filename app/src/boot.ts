@@ -6,12 +6,14 @@ module ContactManagerApp {
   .controller('mainController', MainController)
   .config(($mdIconProvider: angular.material.IIconProvider, 
            $mdThemingProvider: angular.material.IThemingProvider) => {
-    $mdIconProvider.icon('menu', './assets/svg/menu.svg', 24);
+    $mdIconProvider
+    .defaultIconSet('./assets/svg/avatars.svg', 128)
+      .icon('menu', './assets/svg/menu.svg', 24);
 
-    // $mdThemingProvider.theme('default')
-    //   .primaryPalette('blue')
-    //   .accentPalette('red');
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .accentPalette('red');
 
-    $mdThemingProvider.theme('default').dark().primaryPalette('blue').accentPalette('red');
+    // $mdThemingProvider.theme('default').dark().primaryPalette('blue').accentPalette('red');
   });
 }
