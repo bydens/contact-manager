@@ -38,7 +38,8 @@ module ContactManagerApp {
     searchText: string = '';
     users: User[] = [];
     selected: User = null;
-    message: string = "Hello from our controller";
+    // message: string = "Hello from our controller";
+    newNote: Note = new Note('', null);
 
     toggleSideNav() : void {
       this.$mdSidenav('left').toggle();
@@ -71,17 +72,20 @@ module ContactManagerApp {
     addUser($event) {
       var self = this;
       var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'));
-
+      
       this.$mdDialog.show({
         templateUrl: './dist/view/newUserDialog.html',
         parent: angular.element(document.body),
         targetEvent: $event,
         controller: AddUserDialogController,
         controllerAs: 'ctrl',
-        clickOutsideToClose: true,
+        clickOutsideToClose:true,
         fullscreen: useFullScreen
-      }).then((user: User) => {
-        self.openToast('User added.');
+      }).then((user: CreateUser) => {
+        var newUser: User = User.fromCreate(user);
+        self.users.push(newUser);
+        self.selectUser(newUser);
+        self.openToast("User added");
       }, () => {
         console.log('You cancelled the dialog.');
       });
@@ -99,6 +103,23 @@ module ContactManagerApp {
           self.selected.notes = [];
           self.openToast('Cleared notes')
         });
+    }
+
+    formScope: any;
+
+    setFormScope(scope) {
+      this.formScope = scope;
+    }
+
+    addNote() {
+      this.selected.notes.push(this.newNote);
+      
+      //resert the form
+      this.formScope.noteForm.$setUntouched();
+      this.formScope.noteForm.$setPristine();
+
+      this.newNote = new Note('', null);
+      this.openToast('Note added');
     }
 
     removeNote(note: Note): void {
